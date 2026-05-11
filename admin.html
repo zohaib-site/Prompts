@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!-- ════════════════════════════════════════════════════════
+       RADIOTV PROMPTS HUB — admin.html
+       Internal JSON Generator Tool
+  ════════════════════════════════════════════════════════ -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — RadioTV Prompts Hub JSON Generator</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FF0000'/><text y='.9em' font-size='75' x='12'>▶</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Variables ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:         #FF0000;
+      --red-dim:     rgba(255, 0, 0, 0.15);
+      --red-glow:    rgba(255, 0, 0, 0.30);
+      --blue:        #2563EB;
+      --green:       #16A34A;
+      --green-dim:   rgba(22, 163, 74, 0.15);
+      --bg:          #0B0D17;
+      --bg-mid:      #0F1220;
+      --surface:     #141828;
+      --surface-2:   #1a2035;
+      --border:      rgba(255, 255, 255, 0.10);
+      --border-bright: rgba(255, 255, 255, 0.18);
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0BAC9;
+      --text-muted:  #8B95A5;
+      --glass:       rgba(255, 255, 255, 0.05);
+      --font-h:      'Manrope', sans-serif;
+      --font-b:      'DM Sans', sans-serif;
+      --font-mono:   'DM Mono', monospace;
+      --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    [data-theme="light"] {
+      --bg:          #FBFBFB;
+      --bg-mid:      #F3F4F8;
+      --surface:     #FFFFFF;
+      --surface-2:   #F8F9FC;
+      --border:      rgba(0, 0, 0, 0.08);
+      --border-bright: rgba(0, 0, 0, 0.14);
+      --text-primary: #0B0D17;
+      --text-secondary: #374151;
+      --text-muted:  #6B7280;
+      --glass:       rgba(0, 0, 0, 0.03);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-b);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Noise */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.3;
+    }
+
+    /* ── Layout ─────────────────────────────────────────────── */
+    .admin-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .admin-wrapper { grid-template-columns: 1fr; padding-top: 100px; }
+    }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .admin-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 32px;
+      background: rgba(11, 13, 23, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s;
+    }
+
+    [data-theme="light"] .admin-header {
+      background: rgba(251, 251, 251, 0.88);
+    }
+
+    .admin-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--red-dim);
+      border: 1px solid rgba(255,0,0,0.25);
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .admin-header h1 {
+      font-family: var(--font-h);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .header-btn-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s var(--ease);
+    }
+
+    .btn-icon:hover { border-color: var(--border-bright); color: var(--text-primary); }
+
+    /* ── Panel Titles ───────────────────────────────────────── */
+    .panel-title {
+      font-family: var(--font-h);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-title i { color: var(--red); }
+
+    /* ── Form Card ──────────────────────────────────────────── */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+    }
+
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field label {
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .field label .required { color: var(--red); }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-family: var(--font-b);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.25s var(--ease);
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(139,149,165,0.5); }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--red);
+      background: var(--surface);
+      box-shadow: 0 0 0 3px var(--red-dim);
+    }
+
+    .field select { cursor: pointer; appearance: none; }
+    .field select option { background: var(--surface); color: var(--text-primary); }
+
+    .field textarea { min-height: 120px; line-height: 1.6; }
+
+    /* Steps builder */
+    .steps-builder {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .step-num-badge {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      background: var(--red-dim);
+      border: 1px solid rgba(255,0,0,0.2);
+      color: var(--red);
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .step-row input {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text-primary);
+      font-family: var(--font-b);
+      font-size: 13px;
+      outline: none;
+      transition: all 0.25s var(--ease);
+    }
+
+    .step-row input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px var(--red-dim);
+    }
+
+    .step-row input::placeholder { color: rgba(139,149,165,0.5); }
+
+    .btn-step-remove {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      margin-top: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-step-remove:hover { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+
+    .btn-add-step {
+      padding: 9px 14px;
+      border-radius: 9px;
+      border: 1px dashed var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s var(--ease);
+      letter-spacing: 0.03em;
+    }
+
+    .btn-add-step:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--red-dim);
+    }
+
+    /* Tags input */
+    .tags-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: -4px;
+    }
+
+    /* ── Action Buttons ─────────────────────────────────────── */
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-generate {
+      flex: 1;
+      padding: 13px 20px;
+      border-radius: 10px;
+      border: none;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-h);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px;
+      transition: all 0.25s var(--ease);
+      box-shadow: 0 0 20px var(--red-glow);
+      letter-spacing: 0.01em;
+    }
+
+    .btn-generate:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 36px var(--red-glow), 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .btn-reset {
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      color: var(--text-secondary);
+      font-family: var(--font-h);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s var(--ease);
+    }
+
+    .btn-reset:hover { border-color: var(--border-bright); color: var(--text-primary); }
+
+    /* ── Output Card ────────────────────────────────────────── */
+    .output-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+      position: sticky;
+      top: 84px;
+    }
+
+    .output-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .output-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-copy-json {
+      padding: 9px 16px;
+      border-radius: 8px;
+      border: none;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      transition: all 0.25s var(--ease);
+      box-shadow: 0 0 16px var(--green-dim);
+    }
+
+    .btn-copy-json:hover { transform: translateY(-1px); filter: brightness(1.1); }
+    .btn-copy-json.copied { background: #15803d; }
+
+    .btn-download-json {
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      color: var(--text-secondary);
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-download-json:hover { border-color: var(--border-bright); color: var(--text-primary); }
+
+    .json-output {
+      background: var(--bg-mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 300px;
+      max-height: 600px;
+      overflow-y: auto;
+      transition: all 0.3s;
+    }
+
+    /* JSON syntax colors */
+    .json-key    { color: #60A5FA; }
+    .json-string { color: #86EFAC; }
+    .json-number { color: #FCA5A5; }
+    .json-bool   { color: #FCD34D; }
+    .json-null   { color: #A78BFA; }
+    .json-bracket{ color: var(--text-muted); }
+
+    /* Placeholder state */
+    .json-placeholder {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-muted);
+    }
+
+    .json-placeholder-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+      color: var(--border-bright);
+    }
+
+    .json-placeholder p { font-size: 14px; line-height: 1.6; }
+
+    /* ── Usage Instruction ──────────────────────────────────── */
+    .usage-box {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .usage-box-title {
+      font-family: var(--font-h);
+      font-size: 12px;
+      font-weight: 700;
+      color: #60A5FA;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .usage-box ol {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .usage-box li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .usage-box code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: rgba(255,255,255,0.07);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    /* ── Toast ──────────────────────────────────────────────── */
+    #adminToast {
+      position: fixed;
+      bottom: 28px; right: 24px;
+      z-index: 2000;
+      padding: 13px 18px;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      font-family: var(--font-h);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex; align-items: center; gap: 10px;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s var(--ease);
+      min-width: 220px;
+    }
+
+    #adminToast.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+    #adminToast .t-icon { color: var(--green); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Admin Header ──────────────────────────────────────── -->
+  <header class="admin-header">
+    <div class="admin-header-left">
+      <span class="logo-pill">
+        <i class="fa-solid fa-screwdriver-wrench"></i> Admin
+      </span>
+      <h1>Prompt JSON Generator</h1>
+    </div>
+    <div class="header-btn-group">
+      <button class="btn-icon" id="themeToggleAdmin" title="Toggle theme" aria-label="Toggle theme">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <a href="index.html" class="btn-icon" title="Back to Hub" aria-label="Back to Hub">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ── Main Grid ─────────────────────────────────────────── -->
+  <div class="admin-wrapper">
+
+    <!-- LEFT: Form -->
+    <div>
+      <p class="panel-title"><i class="fa-solid fa-pen-nib"></i> New Prompt Entry</p>
+
+      <div class="form-card">
+        <div class="form-grid">
+
+          <!-- Row 1: Title + Category -->
+          <div class="form-row">
+            <div class="field">
+              <label for="fTitle">Title <span class="required">*</span></label>
+              <input type="text" id="fTitle" placeholder="e.g. Viral Hook Generator" />
+            </div>
+            <div class="field">
+              <label for="fCategory">Category <span class="required">*</span></label>
+              <select id="fCategory">
+                <option value="Scripts">Scripts</option>
+                <option value="Thumbnails">Thumbnails</option>
+                <option value="Titles" selected>Titles</option>
+                <option value="SEO">SEO</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 2: AI Model + Difficulty -->
+          <div class="form-row">
+            <div class="field">
+              <label for="fModel">AI Model <span class="required">*</span></label>
+              <select id="fModel">
+                <option value="GPT-4">GPT-4</option>
+                <option value="GPT-4o">GPT-4o</option>
+                <option value="Claude 3">Claude 3</option>
+                <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                <option value="Gemini Pro">Gemini Pro</option>
+                <option value="Midjourney">Midjourney</option>
+                <option value="DALL-E 3">DALL-E 3</option>
+                <option value="Stable Diffusion">Stable Diffusion</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="fDifficulty">Difficulty</label>
+              <select id="fDifficulty">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate" selected>Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Prompt Text -->
+          <div class="field">
+            <label for="fPrompt">Prompt Text <span class="required">*</span></label>
+            <textarea id="fPrompt" placeholder="Paste or type your full AI prompt here...&#10;&#10;Use [BRACKETS] for variables users should customize." style="min-height:160px"></textarea>
+          </div>
+
+          <!-- Image URL -->
+          <div class="field">
+            <label for="fImageUrl"><i class="fa-regular fa-image"></i> Image URL</label>
+            <input type="url" id="fImageUrl" placeholder="https://images.unsplash.com/photo-..." />
+          </div>
+
+          <!-- Tags -->
+          <div class="field">
+            <label for="fTags"><i class="fa-solid fa-tags"></i> Tags</label>
+            <input type="text" id="fTags" placeholder="viral, script, youtube, hook, SEO" />
+            <span class="tags-hint">Comma-separated list of relevant tags</span>
+          </div>
+
+          <!-- Usage Steps Builder -->
+          <div class="field">
+            <label><i class="fa-solid fa-list-ol"></i> Step-by-Step Usage Guide</label>
+            <div class="steps-builder" id="stepsBuilder">
+              <!-- Steps added dynamically -->
+            </div>
+            <button type="button" class="btn-add-step" id="btnAddStep">
+              <i class="fa-solid fa-plus"></i> Add Step
+            </button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="form-actions">
+            <button type="button" class="btn-generate" id="btnGenerate">
+              <i class="fa-solid fa-bolt"></i> Generate JSON
+            </button>
+            <button type="button" class="btn-reset" id="btnReset">
+              <i class="fa-solid fa-rotate-right"></i> Reset
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Output -->
+    <div>
+      <p class="panel-title"><i class="fa-solid fa-code"></i> Generated JSON Block</p>
+
+      <div class="output-card">
+        <div class="output-header">
+          <span style="font-size:13px;color:var(--text-muted);font-family:var(--font-h);font-weight:600">
+            Ready to copy into <code style="font-size:11px;background:var(--glass);padding:2px 6px;border-radius:4px">data/prompts.json</code>
+          </span>
+          <div class="output-actions">
+            <button class="btn-download-json" id="btnDownload" title="Download as .json snippet">
+              <i class="fa-solid fa-download"></i> Download
+            </button>
+            <button class="btn-copy-json" id="btnCopyJson">
+              <i class="fa-regular fa-copy"></i> Copy JSON
+            </button>
+          </div>
+        </div>
+
+        <!-- JSON Output -->
+        <div class="json-output" id="jsonOutput">
+          <div class="json-placeholder">
+            <div class="json-placeholder-icon"><i class="fa-solid fa-code"></i></div>
+            <p>Fill in the form and click<br/><strong>Generate JSON</strong> to see the output here.</p>
+          </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="usage-box">
+          <div class="usage-box-title"><i class="fa-solid fa-circle-info"></i> How to add this prompt</div>
+          <ol>
+            <li>Click <strong>Generate JSON</strong> above, then <strong>Copy JSON</strong>.</li>
+            <li>Open <code>data/prompts.json</code> in your editor.</li>
+            <li>Find the last <code>}</code> before the closing <code>]</code>.</li>
+            <li>Add a comma after it, then paste the copied block.</li>
+            <li>Update the <code>"id"</code> to be unique (increment by 1).</li>
+            <li>Save the file. Your site will auto-show the new prompt!</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="adminToast">
+    <i class="fa-solid fa-circle-check t-icon"></i>
+    <span id="adminToastMsg">Done!</span>
+  </div>
+
+  <script>
+    /* ════════════════════════════════════════════════════════
+       ADMIN SCRIPT — admin.html
+       Real-time JSON generator with live preview
+    ════════════════════════════════════════════════════════ */
+
+    /* ── Theme ────────────────────────────────────────────── */
+    const themeBtn = document.getElementById('themeToggleAdmin');
+    const savedTheme = localStorage.getItem('radiotv-theme') || 'dark';
+    applyTheme(savedTheme);
+
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('radiotv-theme', t);
+      const icon = themeBtn?.querySelector('i');
+      if (icon) icon.className = t === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+
+    themeBtn?.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+
+    /* ── Steps Builder ────────────────────────────────────── */
+    const stepsBuilder = document.getElementById('stepsBuilder');
+    let stepCount = 0;
+
+    function addStep(value = '') {
+      stepCount++;
+      const row = document.createElement('div');
+      row.className = 'step-row';
+      row.dataset.step = stepCount;
+      row.innerHTML = `
+        <div class="step-num-badge">${stepCount}</div>
+        <input type="text" placeholder="Step ${stepCount}: Describe what the user should do..." value="${escapeAttr(value)}" />
+        <button type="button" class="btn-step-remove" title="Remove step">
+          <i class="fa-solid fa-xmark"></i>
+        </button>`;
+
+      row.querySelector('.btn-step-remove').addEventListener('click', () => {
+        row.remove();
+        renumberSteps();
+      });
+
+      stepsBuilder.appendChild(row);
+    }
+
+    function renumberSteps() {
+      const rows = stepsBuilder.querySelectorAll('.step-row');
+      stepCount = rows.length;
+      rows.forEach((row, i) => {
+        row.querySelector('.step-num-badge').textContent = i + 1;
+        row.dataset.step = i + 1;
+      });
+    }
+
+    function getSteps() {
+      return Array.from(stepsBuilder.querySelectorAll('.step-row input'))
+        .map(i => i.value.trim())
+        .filter(Boolean);
+    }
+
+    // Add 3 default steps on load
+    addStep('Replace the [BRACKETS] with your specific details for your niche.');
+    addStep('Run the prompt in your chosen AI model. Review and refine the output.');
+    addStep('Copy the result and paste it directly into YouTube Studio.');
+
+    document.getElementById('btnAddStep')?.addEventListener('click', () => addStep());
+
+    /* ── Generate JSON ────────────────────────────────────── */
+    const jsonOutput  = document.getElementById('jsonOutput');
+    let lastJsonRaw   = '';
+
+    document.getElementById('btnGenerate')?.addEventListener('click', generateJson);
+
+    // Also live-generate on any input change
+    ['fTitle','fCategory','fModel','fDifficulty','fPrompt','fImageUrl','fTags'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', generateJson);
+    });
+    stepsBuilder.addEventListener('input', generateJson);
+
+    function generateJson() {
+      const title    = document.getElementById('fTitle').value.trim();
+      const category = document.getElementById('fCategory').value;
+      const model    = document.getElementById('fModel').value;
+      const diff     = document.getElementById('fDifficulty').value;
+      const prompt   = document.getElementById('fPrompt').value.trim();
+      const imageUrl = document.getElementById('fImageUrl').value.trim();
+      const tagsRaw  = document.getElementById('fTags').value.trim();
+      const steps    = getSteps();
+
+      // Validate required
+      if (!title || !prompt) {
+        jsonOutput.innerHTML = `
+          <div class="json-placeholder">
+            <div class="json-placeholder-icon" style="color:var(--red)"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <p style="color:var(--red)">Please fill in at least <strong>Title</strong> and <strong>Prompt Text</strong>.</p>
+          </div>`;
+        return;
+      }
+
+      const tags = tagsRaw
+        ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean)
+        : [];
+
+      // Build the object
+      const obj = {
+        id: Date.now(), // placeholder — user should replace with actual sequential ID
+        title,
+        category,
+        aiModel: model,
+        difficulty: diff,
+        tags,
+        prompt,
+        imageUrl: imageUrl || 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80',
+        usageSteps: steps,
+      };
+
+      lastJsonRaw = JSON.stringify(obj, null, 2);
+      jsonOutput.innerHTML = syntaxHighlight(lastJsonRaw);
+    }
+
+    /* ── Syntax Highlight ─────────────────────────────────── */
+    function syntaxHighlight(json) {
+      const escaped = json
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+      return escaped.replace(
+        /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+        (match) => {
+          let cls = 'json-number';
+          if (/^"/.test(match)) {
+            cls = /:$/.test(match) ? 'json-key' : 'json-string';
+          } else if (/true|false/.test(match)) {
+            cls = 'json-bool';
+          } else if (/null/.test(match)) {
+            cls = 'json-null';
+          }
+          return `<span class="${cls}">${match}</span>`;
+        }
+      );
+    }
+
+    /* ── Copy JSON ────────────────────────────────────────── */
+    document.getElementById('btnCopyJson')?.addEventListener('click', async () => {
+      if (!lastJsonRaw) {
+        showToast('Generate JSON first!', true);
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(lastJsonRaw);
+        const btn = document.getElementById('btnCopyJson');
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        showToast('JSON copied to clipboard!');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy JSON';
+        }, 2500);
+      } catch {
+        showToast('Copy failed — use Ctrl+A in the output box.', true);
+      }
+    });
+
+    /* ── Download JSON ────────────────────────────────────── */
+    document.getElementById('btnDownload')?.addEventListener('click', () => {
+      if (!lastJsonRaw) { showToast('Generate JSON first!', true); return; }
+      const blob = new Blob([lastJsonRaw], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'new-prompt.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Downloading new-prompt.json…');
+    });
+
+    /* ── Reset Form ───────────────────────────────────────── */
+    document.getElementById('btnReset')?.addEventListener('click', () => {
+      ['fTitle','fPrompt','fImageUrl','fTags'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      stepsBuilder.innerHTML = '';
+      stepCount = 0;
+      addStep('Replace the [BRACKETS] with your specific details for your niche.');
+      addStep('Run the prompt in your chosen AI model. Review and refine the output.');
+      addStep('Copy the result and paste it directly into YouTube Studio.');
+      jsonOutput.innerHTML = `
+        <div class="json-placeholder">
+          <div class="json-placeholder-icon"><i class="fa-solid fa-rotate-right"></i></div>
+          <p>Form cleared. Fill in new details and click <strong>Generate JSON</strong>.</p>
+        </div>`;
+      lastJsonRaw = '';
+    });
+
+    /* ── Toast ────────────────────────────────────────────── */
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('adminToast');
+      const msgEl = document.getElementById('adminToastMsg');
+      const icon = toast.querySelector('.t-icon');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      icon.className = isError
+        ? 'fa-solid fa-circle-xmark t-icon'
+        : 'fa-solid fa-circle-check t-icon';
+      icon.style.color = isError ? 'var(--red)' : 'var(--green)';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    /* ── Utility ─────────────────────────────────────────── */
+    function escapeAttr(str) {
+      return str.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+  </script>
+
+</body>
+</html>
