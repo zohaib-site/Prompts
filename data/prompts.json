@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Viral Title Generator",
+    "category": "Titles",
+    "aiModel": "GPT-4",
+    "difficulty": "Beginner",
+    "tags": ["viral", "titles", "clickbait", "youtube", "engagement", "hook"],
+    "prompt": "Act as a world-class YouTube strategist who has helped 100+ channels reach 1M+ subscribers. Your task is to generate 10 irresistible YouTube video titles for the following topic: [YOUR TOPIC HERE].\n\nRequirements for each title:\n• Must trigger curiosity or strong emotion (fear, excitement, FOMO)\n• Include a power word (Secret, Brutal, Hidden, Exposed, Finally)\n• Optimal length: 50–70 characters\n• At least 3 titles should use the \"Number + Noun\" formula (e.g., \"7 Brutal Truths\")\n• At least 2 should use a \"How I\" or \"Why I\" personal story hook\n• 1 title must include a controversy or contrarian angle\n\nAlso provide: A 1-line explanation of WHY each title works psychologically.\n\nMy niche: [YOUR NICHE — e.g., Finance, Tech, Fitness]\nTarget audience: [DESCRIBE YOUR AUDIENCE — e.g., Beginners aged 18–35]\nVideo goal: [VIEWS / SUBS / SALES / AWARENESS]",
+    "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80",
+    "usageSteps": [
+      "Replace [YOUR TOPIC HERE] with the exact subject of your video (e.g., 'How to invest $100 in crypto').",
+      "Fill in [YOUR NICHE] — be specific. Instead of 'Finance', write 'Personal Finance for Pakistani Millennials'.",
+      "Define your [TARGET AUDIENCE] with age, experience level, and pain points.",
+      "Set your [VIDEO GOAL] — this changes the psychological hook the AI uses.",
+      "Run the prompt in ChatGPT-4 or Claude. Pick the top 3 titles and A/B test them using TubeBuddy or vidIQ.",
+      "Pro Tip: Paste the winning title back and ask: 'Create 5 thumbnail text variations for this title.'"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Full Video Script Writer",
+    "category": "Scripts",
+    "aiModel": "GPT-4",
+    "difficulty": "Intermediate",
+    "tags": ["script", "voiceover", "storytelling", "retention", "hook", "pastor"],
+    "prompt": "You are a senior YouTube scriptwriter who specializes in high-retention videos. Write a full, engaging video script for the topic below using the proven PASTOR framework.\n\nTopic: [YOUR VIDEO TOPIC]\nVideo Length Target: [SHORT: 8-10 min / LONG: 15-20 min]\nChannel Tone: [CASUAL & CONVERSATIONAL / PROFESSIONAL & AUTHORITATIVE / EDUCATIONAL & CALM]\n\nScript Structure:\n1. HOOK (0:00-0:30): Start mid-action. No intros. Open with a bold stat, question, or controversial statement.\n2. PROBLEM (0:30-2:00): Agitate the core pain point. Make the audience feel seen.\n3. AMPLIFY (2:00-4:00): Show what happens if they ignore this problem.\n4. SOLUTION TEASER (4:00-5:00): Hint at the solution. Build anticipation.\n5. TRANSFORMATION (5:00-END): Deliver the value. Use storytelling + data.\n6. CALL TO ACTION (Last 30 sec): One clear CTA — subscribe, comment, or watch next.\n\nFormatting Rules:\n• Write in spoken English — short punchy sentences.\n• Add [B-ROLL SUGGESTION] tags throughout.\n• Add [PAUSE FOR EFFECT] and [SHOW GRAPHIC] cues.\n• End each section with a mini-cliffhanger to kill drop-off.",
+    "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    "usageSteps": [
+      "Define your [VIDEO TOPIC] as a specific, narrow subject — not 'crypto' but 'How to buy your first Bitcoin in Pakistan in 2025'.",
+      "Choose your [VIDEO LENGTH TARGET] based on your current average view duration. If it's under 5 min, start with SHORT.",
+      "Select your [CHANNEL TONE] — your script should sound like YOU, not a robot.",
+      "Paste the full prompt into GPT-4. When you get the script, ask: 'Make the hook more emotional and add 2 more B-roll cues in section 3.'",
+      "Copy the script into Descript or CapCut's teleprompter mode for recording.",
+      "Pro Tip: Ask GPT to also generate 3 thumbnail ideas and 5 title variations from the finished script."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Midjourney Thumbnail Creator",
+    "category": "Thumbnails",
+    "aiModel": "Midjourney",
+    "difficulty": "Intermediate",
+    "tags": ["thumbnail", "midjourney", "AI art", "clickbait", "visual", "design"],
+    "prompt": "/imagine prompt: YouTube thumbnail, [SUBJECT DESCRIPTION — e.g., a man in his 30s, shocked expression, pointing right], dramatic studio lighting, bold red and yellow color palette, high contrast, cinematic composition, shallow depth of field, 4K hyperrealistic photography, clean background on the right side for text overlay, rule-of-thirds framing, Canon EOS R5 style, editorial magazine quality --ar 16:9 --v 6 --style raw --q 2\n\nVariation for illustrated style:\n/imagine prompt: YouTube thumbnail illustration, [SUBJECT], flat vector art style, bold outlines, vibrant neon colors (#FF0000, #FFD700, #0A0A0A), strong shadow, pop art influence, simple clean background, text-safe zone on left 40%, professional social media design --ar 16:9 --v 6\n\nKey Variables to Replace:\n• [SUBJECT DESCRIPTION]: Describe the main person/object in detail\n• Color Palette: Swap red/yellow to match your brand colors\n• Style: Change 'hyperrealistic' to 'cinematic', 'anime', or 'illustration'",
+    "imageUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+    "usageSteps": [
+      "Open Midjourney Discord or midjourney.com and go to any bot channel.",
+      "Replace [SUBJECT DESCRIPTION] with a clear, visual description of your thumbnail's main element.",
+      "Adjust the color palette to match your channel's brand colors for consistency.",
+      "Use --v 6 for most photorealistic results. Use --style raw for less 'AI-looking' output.",
+      "Generate 4 variations (default) then use 'V' buttons to create upscaled sub-variations.",
+      "Pro Tip: After generating, paste the image into Canva and add your channel's text overlay using the same font as your brand kit."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "SEO Description Optimizer",
+    "category": "SEO",
+    "aiModel": "GPT-4",
+    "difficulty": "Beginner",
+    "tags": ["SEO", "description", "keywords", "search ranking", "metadata", "algorithm"],
+    "prompt": "Act as a YouTube SEO expert with 10+ years of experience ranking videos on page 1. Write a fully optimized YouTube video description for the following:\n\nVideo Title: [YOUR EXACT VIDEO TITLE]\nMain Topic: [WHAT IS THE VIDEO ABOUT — 2 sentences]\nPrimary Keyword: [MAIN KEYWORD TO RANK FOR]\nSecondary Keywords: [3-5 RELATED KEYWORDS]\nChannel Niche: [YOUR NICHE]\nTarget Country/Language: [e.g., Pakistan, English]\n\nDescription Requirements:\n• First 2 lines must be compelling (visible without 'Show more') and contain the primary keyword naturally\n• Total length: 300-500 words\n• Include a timestamped chapter structure (00:00 Intro, 02:30 Main Topic, etc.)\n• Add 3-5 relevant hashtags at the bottom\n• Include a soft CTA for subscribers and a link placeholder [YOUR LINK]\n• Sprinkle secondary keywords naturally — no keyword stuffing\n• End with 3 lines of social proof or channel description",
+    "imageUrl": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
+    "usageSteps": [
+      "Start with your exact video title — copy it precisely from your YouTube draft.",
+      "Research your [PRIMARY KEYWORD] using VidIQ, TubeBuddy, or Google Trends before running this prompt.",
+      "List 3-5 [SECONDARY KEYWORDS] — these should be related search terms your audience uses.",
+      "For [TARGET COUNTRY], specify even if English — YouTube uses geo-signals for recommendations.",
+      "Paste the generated description into YouTube Studio and check the keyword density using a free SEO checker.",
+      "Pro Tip: Run this prompt again after your video hits 1,000 views and update the description with new trending keywords."
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Community Post Calendar",
+    "category": "SEO",
+    "aiModel": "Claude 3",
+    "difficulty": "Beginner",
+    "tags": ["community", "engagement", "polls", "posts", "audience", "calendar"],
+    "prompt": "You are a YouTube community engagement specialist. Generate a 30-day Community Post content calendar for my YouTube channel.\n\nChannel Niche: [YOUR NICHE]\nChannel Size: [SMALL <10K / MEDIUM 10K-100K / LARGE 100K+]\nPosting Goal: [INCREASE ENGAGEMENT / GROW SUBSCRIBERS / PROMOTE VIDEOS / BUILD BRAND]\nAudience Location: [PRIMARY AUDIENCE COUNTRY]\n\nFor each post, provide:\n1. Post Type (Poll / Text / Image / Video Teaser / Quiz)\n2. Post Copy (complete, ready-to-publish text under 300 chars)\n3. Engagement Hook (the question or action that drives comments)\n4. Best Time to Post (Day + Hour)\n5. Expected Outcome (what this post achieves strategically)\n\nMix of post types:\n• 10 Polls (audience research disguised as entertainment)\n• 8 Behind-the-scenes text posts\n• 6 Video teasers with curiosity hooks\n• 4 'Hot take' opinion posts to spark debate\n• 2 Community milestones / celebration posts",
+    "imageUrl": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&q=80",
+    "usageSteps": [
+      "Set your [CHANNEL NICHE] — be hyper-specific. 'Tech Reviews Pakistan' is better than just 'Tech'.",
+      "Choose your [CHANNEL SIZE] honestly — this changes the tone and strategy the AI uses.",
+      "For [POSTING GOAL], pick ONE primary goal per month. Mixing goals dilutes results.",
+      "Run the prompt in Claude 3 Opus for best calendar structure, or ChatGPT-4 for more creative copy.",
+      "Schedule posts using YouTube Studio's 'Community' tab — post at the AI-suggested times.",
+      "Pro Tip: Use poll results as real data to inform your NEXT video topic — it's built-in audience research."
+    ]
+  }
+]
