@@ -1,269 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <!-- ════════════════════════════════════════════════════════
-       RADIOTV PROMPTS HUB — index.html
-       The Ultimate YouTube AI Toolkit
-  ════════════════════════════════════════════════════════ -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary SEO -->
-  <title>RadioTV Prompts Hub — The Ultimate YouTube AI Toolkit</title>
-  <meta name="description" content="A curated library of premium AI prompts for YouTube creators. Generate viral titles, full video scripts, Midjourney thumbnails, SEO descriptions, and more." />
-  <meta name="keywords" content="YouTube AI prompts, ChatGPT prompts for YouTube, Midjourney thumbnail prompts, YouTube SEO, video script AI, YouTube creator tools" />
-  <meta name="author" content="RadioTV" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://radiotv-prompts-hub.vercel.app/" />
-
-  <!-- Open Graph (Social Preview) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://radiotv-prompts-hub.vercel.app/" />
-  <meta property="og:title" content="RadioTV Prompts Hub — YouTube AI Toolkit" />
-  <meta property="og:description" content="Premium AI prompts for YouTube scripts, thumbnails, titles, SEO and community posts." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RadioTV Prompts Hub" />
-  <meta name="twitter:description" content="The ultimate AI prompt library for YouTube creators." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80" />
-
-  <!-- Theme color for mobile browsers -->
+  <title>RadioTV Prompts — The Ultimate YouTube AI Toolkit</title>
+  <meta name="description" content="Premium AI prompts library for YouTube creators by Muhammad Sami Ramzan — RadioTV." />
+  <meta name="author" content="Muhammad Sami Ramzan" />
   <meta name="theme-color" content="#0B0D17" />
-
-  <!-- Favicon (inline SVG) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FF0000'/><text y='.9em' font-size='75' x='12'>▶</text></svg>" />
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- FontAwesome 6 (Free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Preconnect for Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "RadioTV Prompts Hub",
-    "description": "Premium AI prompts for YouTube creators",
-    "url": "https://radiotv-prompts-hub.vercel.app/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://radiotv-prompts-hub.vercel.app/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ── Ambient Background Blobs ─────────────────────────── -->
   <div class="ambient-layer" aria-hidden="true">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════════
-       HEADER / NAV
-  ════════════════════════════════════════════════════════ -->
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader" role="banner">
-    <a href="/" class="header-logo" aria-label="RadioTV Prompts Hub home">
-      <div class="logo-icon" aria-hidden="true">
-        <i class="fa-solid fa-play"></i>
-      </div>
-      <span class="logo-text">Radio<span>TV</span></span>
+    <a href="#" class="header-logo" aria-label="RadioTV Prompts home">
+      <img src="logo.jpg" alt="RadioTV" class="logo-img" />
+      <span class="logo-text">Radio<span>TV</span> Prompts</span>
     </a>
-
     <div class="header-actions">
-      <!-- Theme Toggle -->
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <i class="fa-solid fa-sun"></i>
       </button>
-
-      <!-- Admin Link -->
-      <a href="admin.html" class="header-cta" aria-label="Add new prompt">
-        <i class="fa-solid fa-plus"></i> Add Prompt
-      </a>
     </div>
   </header>
 
-  <!-- ════════════════════════════════════════════════════════
-       MAIN CONTENT
-  ════════════════════════════════════════════════════════ -->
-  <main role="main">
+  <!-- MAIN LIST PAGE -->
+  <main role="main" id="mainPage">
 
-    <!-- ── HERO SECTION ──────────────────────────────────── -->
+    <!-- HERO -->
     <section class="hero" aria-labelledby="heroTitle">
       <div class="wrapper">
-
-        <!-- Eyebrow -->
         <div class="hero-eyebrow" role="status">
           <span class="pulse-dot" aria-hidden="true"></span>
           The Ultimate YouTube AI Toolkit
         </div>
-
-        <!-- Title -->
         <h1 class="hero-title" id="heroTitle">
           Prompts That<br />
           <span class="accent">Create Creators</span>
         </h1>
-
-        <!-- Subtitle -->
         <p class="hero-subtitle">
-          A curated library of battle-tested AI prompts for YouTube scripts,
-          viral titles, Midjourney thumbnails, and SEO. Copy. Paste. Publish.
+          Battle-tested AI prompts for YouTube scripts, viral titles,
+          Midjourney thumbnails, and SEO. Copy. Paste. Publish.
         </p>
-
-        <!-- Stats Bar -->
-        <div class="hero-stats" role="list" aria-label="Key statistics">
-          <div class="stat-item" role="listitem">
-            <div class="stat-number">5+</div>
-            <div class="stat-label">AI Prompts</div>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat-item" role="listitem">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Categories</div>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat-item" role="listitem">
-            <div class="stat-number">3</div>
-            <div class="stat-label">AI Models</div>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
+        <div class="hero-stats" role="list">
           <div class="stat-item" role="listitem">
             <div class="stat-number">100%</div>
             <div class="stat-label">Free</div>
           </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item" role="listitem">
+            <div class="stat-number">RadioTV</div>
+            <div class="stat-label">By Sami Ramzan</div>
+          </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ── SEARCH & FILTER BAR ───────────────────────────── -->
-    <section class="search-section" aria-label="Search and filter prompts">
+    <!-- SEARCH -->
+    <section class="search-section" aria-label="Search prompts">
       <div class="wrapper">
-
-        <!-- Search Bar -->
         <div class="search-bar-wrapper" role="search">
           <label for="searchInput" class="sr-only">Search prompts</label>
           <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Search by title, category, or tag…"
-            autocomplete="off"
-            spellcheck="false"
-            aria-label="Search prompts"
-          />
-          <button class="search-clear" id="searchClear" aria-label="Clear search" title="Clear">
-            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          <input type="search" id="searchInput" placeholder="Search prompts by title or tag…" autocomplete="off" spellcheck="false" />
+          <button class="search-clear" id="searchClear" aria-label="Clear" title="Clear">
+            <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
-
-        <!-- Category Filter Pills -->
-        <nav class="filter-pills" role="navigation" aria-label="Filter by category">
-          <button class="pill active" data-filter="All" aria-pressed="true">
-            <i class="fa-solid fa-border-all"></i> All
-          </button>
-          <button class="pill" data-filter="Scripts" aria-pressed="false">
-            <i class="fa-solid fa-scroll"></i> Scripts
-          </button>
-          <button class="pill" data-filter="Thumbnails" aria-pressed="false">
-            <i class="fa-solid fa-image"></i> Thumbnails
-          </button>
-          <button class="pill" data-filter="Titles" aria-pressed="false">
-            <i class="fa-solid fa-heading"></i> Titles
-          </button>
-          <button class="pill" data-filter="SEO" aria-pressed="false">
-            <i class="fa-solid fa-chart-line"></i> SEO
-          </button>
-        </nav>
-
       </div>
     </section>
 
-    <!-- ── PROMPTS SECTION ───────────────────────────────── -->
+    <!-- PROMPTS GRID -->
     <section class="prompts-section" aria-label="Prompt library">
       <div class="wrapper">
-
-        <!-- Results meta -->
         <div class="results-meta" role="status" aria-live="polite">
           <span class="results-count" id="resultsCount">Loading prompts…</span>
         </div>
-
-        <!-- Prompt Cards Grid -->
-        <div id="promptsGrid" role="list" aria-label="AI prompt cards">
-          <!-- Cards rendered by script.js -->
-        </div>
-
-        <!-- No Results (hidden by default) -->
+        <div id="promptsGrid" role="list"></div>
         <div id="noResults" role="alert" aria-live="assertive">
-          <div class="no-results-icon" aria-hidden="true">
-            <i class="fa-solid fa-face-meh"></i>
-          </div>
+          <div class="no-results-icon"><i class="fa-solid fa-face-meh"></i></div>
           <div class="no-results-title">No prompts found</div>
-          <div class="no-results-sub">Try a different search term or clear your filters.</div>
+          <div class="no-results-sub">Try a different search term.</div>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- ════════════════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════════════ -->
+  <!-- DETAIL PAGE (full-screen overlay) -->
+  <div id="detailPage" aria-hidden="true">
+    <div class="detail-header">
+      <button class="detail-back" id="detailBackBtn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </button>
+      <div class="detail-header-title" id="detailHeaderTitle"></div>
+      <button class="theme-toggle" id="themeToggle2" aria-label="Toggle theme">
+        <i class="fa-solid fa-sun"></i>
+      </button>
+    </div>
+    <div class="detail-body" id="detailBody"></div>
+  </div>
+
+  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="wrapper">
-      <div class="footer-logo-text">Radio<span>TV</span> Prompts Hub</div>
-      <div class="footer-sub">The Ultimate YouTube AI Toolkit — Built with ❤️ for creators</div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="admin.html" class="footer-link">
-          <i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Add Prompt
-        </a>
-        <a href="data/prompts.json" class="footer-link" target="_blank" rel="noopener">
-          <i class="fa-solid fa-database" aria-hidden="true"></i> Raw JSON
-        </a>
-      </nav>
+      <div class="footer-logo-wrap">
+        <img src="logo.jpg" alt="RadioTV" class="footer-logo-img" />
+        <div class="footer-logo-text">Radio<span>TV</span> Prompts</div>
+      </div>
+      <div class="footer-sub">The Ultimate YouTube AI Toolkit — Built with ❤️ by Muhammad Sami Ramzan</div>
     </div>
   </footer>
 
-  <!-- ════════════════════════════════════════════════════════
-       LIGHTBOX MODAL
-  ════════════════════════════════════════════════════════ -->
-  <div
-    id="lightboxModal"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Image preview"
-    tabindex="-1"
-  >
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close image preview">
-        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-      </button>
-      <img id="lightboxImg" src="" alt="Prompt example preview" />
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════════
-       TOAST NOTIFICATIONS CONTAINER
-  ════════════════════════════════════════════════════════ -->
   <div id="toastContainer" role="alert" aria-live="polite" aria-atomic="false"></div>
 
-  <!-- Main JS -->
   <script src="script.js"></script>
-
 </body>
 </html>
