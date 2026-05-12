@@ -17,24 +17,7 @@
       "Pro Tip: Paste the winning title back and ask: 'Create 5 thumbnail text variations for this title.'"
     ]
   },
-  {
-    "id": 2,
-    "title": "Full Video Script Writer",
-    "category": "Scripts",
-    "aiModel": "GPT-4",
-    "difficulty": "Intermediate",
-    "tags": ["script", "voiceover", "storytelling", "retention", "hook", "pastor"],
-    "prompt": "You are a senior YouTube scriptwriter who specializes in high-retention videos. Write a full, engaging video script for the topic below using the proven PASTOR framework.\n\nTopic: [YOUR VIDEO TOPIC]\nVideo Length Target: [SHORT: 8-10 min / LONG: 15-20 min]\nChannel Tone: [CASUAL & CONVERSATIONAL / PROFESSIONAL & AUTHORITATIVE / EDUCATIONAL & CALM]\n\nScript Structure:\n1. HOOK (0:00-0:30): Start mid-action. No intros. Open with a bold stat, question, or controversial statement.\n2. PROBLEM (0:30-2:00): Agitate the core pain point. Make the audience feel seen.\n3. AMPLIFY (2:00-4:00): Show what happens if they ignore this problem.\n4. SOLUTION TEASER (4:00-5:00): Hint at the solution. Build anticipation.\n5. TRANSFORMATION (5:00-END): Deliver the value. Use storytelling + data.\n6. CALL TO ACTION (Last 30 sec): One clear CTA — subscribe, comment, or watch next.\n\nFormatting Rules:\n• Write in spoken English — short punchy sentences.\n• Add [B-ROLL SUGGESTION] tags throughout.\n• Add [PAUSE FOR EFFECT] and [SHOW GRAPHIC] cues.\n• End each section with a mini-cliffhanger to kill drop-off.",
-    "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-    "usageSteps": [
-      "Define your [VIDEO TOPIC] as a specific, narrow subject — not 'crypto' but 'How to buy your first Bitcoin in Pakistan in 2025'.",
-      "Choose your [VIDEO LENGTH TARGET] based on your current average view duration. If it's under 5 min, start with SHORT.",
-      "Select your [CHANNEL TONE] — your script should sound like YOU, not a robot.",
-      "Paste the full prompt into GPT-4. When you get the script, ask: 'Make the hook more emotional and add 2 more B-roll cues in section 3.'",
-      "Copy the script into Descript or CapCut's teleprompter mode for recording.",
-      "Pro Tip: Ask GPT to also generate 3 thumbnail ideas and 5 title variations from the finished script."
-    ]
-  },
+ 
   {
     "id": 3,
     "title": "Midjourney Thumbnail Creator",
